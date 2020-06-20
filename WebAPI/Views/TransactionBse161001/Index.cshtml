@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebAPI.Models.TransactionBse161001>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        background-color: lemonchiffon;
+    }
+</style>
+<h2>Transation Record</h2>
+
+<a href="@Url.Action("Create")" class="btn btn-success btn-lg" role="button">Add Transation Record</a>
+<br />
+<br />
+@{int i = 0;}
+@foreach (var item in Model)
+{
+
+    <div class="col-lg-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">   <center> <h2>Transaction No. <span>@(++i)</span></h2></center></div>
+            <div class="panel-body">
+
+
+                Transaction Date: @Html.DisplayFor(modelItem => item.TransactionDate)<br />
+                Transaction Type: @Html.DisplayFor(modelItem => item.TransactionType)<br />
+
+                Transaction Amount:@Html.DisplayFor(modelItem => item.TransactionAmount)<br />
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <a href="@Url.Action("Details", new { id = item.TransactionId})" class="btn btn-primary a-btn-slide-text">
+                            <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
+                            <span><strong>Details</strong></span>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="@Url.Action("Edit", new { id = item.TransactionId})" class="btn btn-success a-btn-slide-text">
+                            <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
+                            <span><strong>Edit</strong></span>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="@Url.Action("Delete", new { id = item.TransactionId})" class="btn btn-danger a-btn-slide-text">
+                            <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
+                            <span><strong>Delete</strong></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
